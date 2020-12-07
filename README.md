@@ -3,7 +3,7 @@
 
 Todo:
 * ~~Modelagem de Clinica~~
-* Modelagem de Consulta
+* ~~Modelagem de Consulta~~
 * Modelagem de Psicologo
 * Modelagem de Paciente
 * View e Controller de Consulta
@@ -17,4 +17,5 @@ Todo:
 * View e Controller de Psicologo
 * View e Controller de Paciente
     * Um Pseudo-login pra paciente, onde ele poderia verificar suas consultas futuras?
+* Salvar dados com persistência
 
