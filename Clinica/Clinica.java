@@ -22,6 +22,8 @@ public class Clinica{
         this.bairro = bairro;
         this.endereco_0 = endereco_0;
         this.endereco_1 = endereco_1;
+        this.psicologos = new HashSet<Psicologo>();
+        this.calendario = new HashSet<Consulta>();
     }
 
 
@@ -64,6 +66,19 @@ public class Clinica{
     public HashSet<Consulta> getCalendario() {
         return this.calendario;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Clinica)) {
+            return false;
+        }
+        Clinica clinica = (Clinica) o;
+        return (cidade == clinica.cidade) && (bairro == clinica.bairro) && (endereco_0 == clinica.endereco_0) && (endereco_1 == clinica.endereco_1) ;
+    }
+
 
     
 
