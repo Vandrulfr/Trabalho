@@ -41,6 +41,30 @@ public class Consulta {
         this.psicologo = psicologo;
     }
 
+    public Clinica getClinica() {
+        return this.clinica;
+    }
+
+    public Paciente getPaciente() {
+        return this.paciente;
+    }
+
+    public Psicologo getPsicologo() {
+        return this.psicologo;
+    }
+
+    public Date getData() {
+        return this.data;
+    }
+
+    public Time getHorario_inicio() {
+        return this.horario_inicio;
+    }
+
+    public Time getHorario_fim() {
+        return this.horario_fim;
+    }
+
 
 
 
