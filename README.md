@@ -4,8 +4,10 @@
 Todo:
 * ~~Modelagem de Clinica~~
 * ~~Modelagem de Consulta~~
-* Modelagem de Psicologo
-* Modelagem de Paciente
+* ~~Modelagem de Psicologo~~
+* ~~Modelagem de Paciente~~
+* Testar modelos
+* Refatoração
 * View e Controller de Consulta
 * Criacao de Consulta
     * Verificando horarios compativeis
@@ -17,5 +19,6 @@ Todo:
 * View e Controller de Psicologo
 * View e Controller de Paciente
     * Um Pseudo-login pra paciente, onde ele poderia verificar suas consultas futuras?
+* Refatoração
 * Salvar dados com persistência
 

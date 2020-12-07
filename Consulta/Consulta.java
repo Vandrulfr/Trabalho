@@ -1,18 +1,18 @@
 package Consulta;
 
 
-import java.sql.Date;
+import java.util.Calendar;
 import java.sql.Time;
 
 import Clinica.Clinica;
 import Paciente.Paciente;
 import Psicologo.Psicologo;
-
+/*** Uma consulta tem uma clinica, um paciente, um psicologo, data, horario de começo e fim. */
 public class Consulta {
     private Clinica clinica;
     private Paciente paciente;
     private Psicologo psicologo;
-    private Date data;
+    private Calendar data;
     private Time horario_inicio;
     private Time horario_fim;
 
@@ -25,7 +25,7 @@ public class Consulta {
         this.paciente = paciente;
     }
 
-    public void setData(Date data) {
+    public void setData(Calendar data) {
         this.data = data;
     }
 
@@ -53,7 +53,7 @@ public class Consulta {
         return this.psicologo;
     }
 
-    public Date getData() {
+    public Calendar getData() {
         return this.data;
     }
 
@@ -76,11 +76,23 @@ public class Consulta {
             return false;
         }
         Consulta consulta = (Consulta) o;
-        return (clinica == consulta.clinica) &&
+        return //N precisa verificar clinica se cada psicologo so tem uma clinica
             (psicologo == consulta.psicologo) && 
             (data == consulta.data) && 
             (horario_inicio == consulta.horario_inicio) && 
             (horario_fim == consulta.horario_fim);
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " clinica='" + getClinica() + "'" +
+            ", paciente='" + getPaciente() + "'" +
+            ", psicologo='" + getPsicologo() + "'" +
+            ", data='" + getData() + "'" +
+            ", horario_inicio='" + getHorario_inicio() + "'" +
+            ", horario_fim='" + getHorario_fim() + "'" +
+            "}";
     }
 
     
