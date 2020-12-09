@@ -16,6 +16,8 @@ Todo:
 * Encontrar clinicas proximas ao paciente com base em Bairro, Cidade
     * Modelagem de cidade para verificar em cidades vizinhas caso não encontre na cidade do Paciente?
 * View e Controller de Clinica
+    * View
+    * ~~Controller~~
 * View e Controller de Psicologo
 * View e Controller de Paciente
     * Um Pseudo-login pra paciente, onde ele poderia verificar suas consultas futuras?
