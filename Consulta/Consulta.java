@@ -1,72 +1,72 @@
 package Consulta;
 
 
-import java.util.Calendar;
-import java.sql.Time;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-import Clinica.Clinica;
+import Abstract.Model;
 import Paciente.Paciente;
 import Psicologo.Psicologo;
-/*** Uma consulta tem uma clinica, um paciente, um psicologo, data, horario de começo e fim. */
-public class Consulta {
-    private Clinica clinica;
-    private Paciente paciente;
-    private Psicologo psicologo;
-    private Calendar data;
-    private Time horario_inicio;
-    private Time horario_fim;
+
+/*** Uma consulta tem uma um paciente, um psicologo, data, horario de começo e fim. */
+public class Consulta extends Model implements Serializable{
+    static final long serialVersionUID = 1l;
+    private int paciente;
+    private int psicologo;
+    private LocalDate data;
+    private LocalTime horario_inicio;
+    private LocalTime horario_fim;
 
 
-    public Consulta(Clinica clinica) {
-        this.clinica = clinica;
+    public Consulta(Psicologo psicologo, Paciente paciente){
+        this.paciente = paciente.getId();
+        this.psicologo = psicologo.getId();
     }
 
     public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+        this.paciente = paciente.getId();
     }
 
-    public void setData(Calendar data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
-    public void setHorario_inicio(Time horario_inicio) {
+    public void setHorario_inicio(LocalTime horario_inicio) {
         this.horario_inicio = horario_inicio;
     }
 
-    public void setHorario_fim(Time horario_fim) {
+    public void setHorario_fim(LocalTime horario_fim) {
         this.horario_fim = horario_fim;
     }
 
     public void setPsicologo(Psicologo psicologo) {
-        this.psicologo = psicologo;
+        this.psicologo = psicologo.getId();
     }
 
-    public Clinica getClinica() {
-        return this.clinica;
-    }
-
-    public Paciente getPaciente() {
+    public int getPaciente() {
         return this.paciente;
     }
 
-    public Psicologo getPsicologo() {
+    public int getPsicologo() {
         return this.psicologo;
     }
 
-    public Calendar getData() {
+    public LocalDate getData() {
         return this.data;
     }
 
-    public Time getHorario_inicio() {
+    public LocalTime getHorario_inicio() {
         return this.horario_inicio;
     }
 
-    public Time getHorario_fim() {
+    public LocalTime getHorario_fim() {
         return this.horario_fim;
     }
 
-
-
+    protected static Consulta leDeArquivo(String nome){
+        return ((Consulta) Model.leDeArquivo(nome));
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -76,23 +76,21 @@ public class Consulta {
             return false;
         }
         Consulta consulta = (Consulta) o;
-        return //N precisa verificar clinica se cada psicologo so tem uma clinica
-            (psicologo == consulta.psicologo) && 
-            (data == consulta.data) && 
-            (horario_inicio == consulta.horario_inicio) && 
-            (horario_fim == consulta.horario_fim);
+        return 
+            (psicologo == (consulta.getPsicologo())) && 
+            (data.equals(consulta.getData())) && 
+            (horario_inicio.equals(consulta.getHorario_inicio())) && 
+            (horario_fim.equals(consulta.getHorario_fim()));
     }
 
     @Override
     public String toString() {
-        return "{" +
-            " clinica='" + getClinica() + "'" +
-            ", paciente='" + getPaciente() + "'" +
-            ", psicologo='" + getPsicologo() + "'" +
-            ", data='" + getData() + "'" +
-            ", horario_inicio='" + getHorario_inicio() + "'" +
-            ", horario_fim='" + getHorario_fim() + "'" +
-            "}";
+        return 
+            "paciente: " + getPaciente() +
+            "\npsicologo: " + getPsicologo() +
+            "\ndata: " + getData() +
+            "\nhorario_inicio: " + getHorario_inicio()+
+            "\nhorario_fim: " + getHorario_fim();
     }
 
     

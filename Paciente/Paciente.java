@@ -1,5 +1,8 @@
 package Paciente;
 
+import java.io.Serializable;
+
+import Abstract.Model;
 import Consulta.Consulta;
 /***
  * Um paciente guarda o dado de sua proxima consulta, caso exista, seu nome, e uma bool que diz se é sua primeira consulta
@@ -7,7 +10,8 @@ import Consulta.Consulta;
  * Além disso imagino que seja uma informação util de se ter.)
  * Também adicionei um campo CPF para poder encontrar pacientes com nomes iguais
  * */
-public class Paciente {
+public class Paciente extends Model implements Serializable {
+    static final long serialVersionUID = 1l;
     private String nome;
     long cpf;
     boolean primeira_consulta = true;

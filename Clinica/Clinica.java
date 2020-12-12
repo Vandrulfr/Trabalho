@@ -1,12 +1,9 @@
 package Clinica;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import Abstract.Model;
 //import Consulta.Consulta;
 import Psicologo.Psicologo;
 /***
@@ -14,14 +11,14 @@ import Psicologo.Psicologo;
  * E um set de psicologos.
  * Os psicologos guardam os dados das consultas (para mais detalhes ver model de Psicologo)
  */
-public class Clinica implements Serializable{
+public class Clinica extends Model implements Serializable{
     static final long serialVersionUID = 1l;
     protected int id;
     private String cidade;
     private String bairro;
     private String endereco_0;
     private String endereco_1;
-    private ArrayList<Psicologo> psicologos;
+    private ArrayList<Integer> psicologos;
     // clinica n precisa de calendario pois o psicologo ja tem calendario
     //private HashSet<Consulta> calendario;
 
@@ -29,41 +26,20 @@ public class Clinica implements Serializable{
     public Clinica() {
     }
 
-    protected void escreveEmArquivo(String nome){
-        try{
-            FileOutputStream fos = new FileOutputStream(nome);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(this);
-            oos.close();
-        }catch(Exception e){System.out.println(e);}
-    }
     protected static Clinica leDeArquivo(String nome){
-        try {
-            FileInputStream fin = new FileInputStream(nome);
-            ObjectInputStream ois = new ObjectInputStream(fin);
-            Clinica clinicaArquivo = (Clinica) ois.readObject();
-            ois.close();
-            return clinicaArquivo;
-        } catch (Exception e){System.out.println(e); return null;}
-    }
+        return (Clinica) Model.leDeArquivo(nome);
+    } 
     
     public Clinica(String cidade, String bairro, String endereco_0, String endereco_1){
         this.cidade = cidade;
         this.bairro = bairro;
         this.endereco_0 = endereco_0;
         this.endereco_1 = endereco_1;
-        this.psicologos = new ArrayList<Psicologo>();
+        this.psicologos = new ArrayList<Integer>();
         //this.calendario = new HashSet<Consulta>();
     }
 
 
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getCidade() {
         return this.cidade;
@@ -97,13 +73,18 @@ public class Clinica implements Serializable{
         this.endereco_1 = endereco_1;
     }
 
-    public ArrayList<Psicologo> getPsicologos() {
+    public ArrayList<Integer> getPsicologos() {
         return this.psicologos;
+    }
+
+    public void addPsicologo(Psicologo psicologo){
+        this.psicologos.add(psicologo.getId());
     }
 
     // public HashSet<Consulta> getCalendario() {
     //     return this.calendario;
     // }
+
 
 
     @Override
@@ -115,17 +96,21 @@ public class Clinica implements Serializable{
             return false;
         }
         Clinica clinica = (Clinica) o;
-        return ((this.cidade.equals(clinica.getCidade())) && (this.bairro.equals(clinica.getBairro())) && (this.endereco_0.equals(clinica.getEndereco_0())) && (this.endereco_1.equals(clinica.getEndereco_1()))) ;
+        return (cidade.equals(clinica.getCidade())) &&
+            (bairro.equals(clinica.getBairro())) &&
+            (endereco_0.equals(clinica.getEndereco_0())) &&
+            (endereco_1.equals(clinica.getEndereco_1()));
     }
 
 
     @Override
     public String toString() {
         return 
-            "Cidade: " + getCidade() +
+            "ID: " + getId() + 
+            "\ncidade: " + getCidade() +
             "\nbairro: " + getBairro() +
-            "\nendereco_0: " + getEndereco_0() + 
-            "\nendereco_1: " + getEndereco_1() + 
+            "\nendereço: " + getEndereco_0() + 
+            "\n" + getEndereco_1() + 
             "\npsicologos: " + getPsicologos()
             ;
     }

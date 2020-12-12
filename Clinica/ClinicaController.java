@@ -1,16 +1,14 @@
 package Clinica;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import Abstract.Controller;
 /***
  * Controller de Clinica. Através dele são criadas e manipuladas as Clinicas.
  */
-public final class ClinicaController{
-    private static ArrayList<Integer> clinicas = new ArrayList<Integer>();
+public final class ClinicaController extends Controller {
+    ArrayList<Integer> clinicas = index;
+    private static String tipo = "Clinicas";
 
     /**
      * Cria uma clinica usando o construtor de clinica.
@@ -21,12 +19,12 @@ public final class ClinicaController{
      * @param endereco_1
      * @return
      */
-    public static boolean criarClinica(String cidade, String bairro, String endereco_0, String endereco_1){
+    public boolean criarClinica(String cidade, String bairro, String endereco_0, String endereco_1){
         Clinica newClinica = new Clinica(cidade, bairro, endereco_0, endereco_1);
         if(!clinicas.isEmpty()){
             // Confere se não existem duplicatas
             ArrayList<Clinica> clinicasExistentes = new ArrayList<Clinica>();
-            clinicas.forEach((c) -> clinicasExistentes.add(getClinica(c.toString())));
+            clinicas.forEach((c) -> clinicasExistentes.add(getObject(c)));
             if(clinicasExistentes.contains(newClinica)){return false;}
             // Setta id da clinica
             newClinica.setId(clinicas.size());
@@ -35,31 +33,17 @@ public final class ClinicaController{
         }
         newClinica.escreveEmArquivo("Database/Clinica"+String.valueOf(newClinica.getId()));
         clinicas.add(newClinica.getId());
-        return salvaIndex();
+        return salvaIndex(tipo);
      }
      
 
-     public static Clinica getClinica(String id){
+     public Clinica getObject(int id){
          return Clinica.leDeArquivo("Database/Clinica"+id);
      }
 
-     private static boolean salvaIndex() {
-        try{
-            FileOutputStream fos = new FileOutputStream("Database/IndexClinicas");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(clinicas);
-            oos.close();
-            return true;
-        }catch(Exception e){System.out.println(e); return false;}
+     public static void update(Clinica clinica){
+        clinica.escreveEmArquivo("Database/Clinica"+String.valueOf(clinica.id));
      }
-     public static boolean carregaIndex(){
-        try {
-            FileInputStream fin = new FileInputStream("Database/IndexClinicas");
-            ObjectInputStream ois = new ObjectInputStream(fin);
-            ArrayList<Integer> clinicasArq = (ArrayList<Integer>) ois.readObject();
-            ois.close();
-            clinicas = clinicasArq;
-            return true;
-        } catch (Exception e){System.out.println(e); return false;}
-     }
+     
+
 }

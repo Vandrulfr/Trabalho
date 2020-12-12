@@ -1,20 +1,28 @@
 import Clinica.Clinica;
+import Clinica.ClinicaController;
 import Consulta.Consulta;
+import Consulta.ConsultaController;
 import Paciente.Paciente;
 import Psicologo.Psicologo;
+import Psicologo.PsicologoController;
 
 public class Main {
     public static void main(String[] args) {
         /***
          * Testes
          */
-        Clinica clinica = new Clinica("Itaborai", "Rio Varzea", "Rua Afonso Mello", "200");
-        Clinica clinica2 = new Clinica("Niteroi", "Centro", "Rua Marechal Peixoto", "123");
-        Consulta consulta = new Consulta(clinica);
-        Psicologo psicologo = new Psicologo("Psicologo McPsicologoface", clinica);
+        ClinicaController clinicas = new ClinicaController();
+        PsicologoController psicologos = new PsicologoController();
+        ConsultaController consultas = new ConsultaController();
+        clinicas.criarClinica("Sao Goncalo", "Centro", "Rua Principal", "");
+        clinicas.criarClinica("Sao Goncalo", "Apollo", "Rua Marginal", "");
+        Clinica clinica = clinicas.getObject(0);
         Paciente paciente = new Paciente("Paciente McPacienteface", 12345678912l);
+        psicologos.criarPsicologo("Psicologo McPsicologoface", clinica);
+        Psicologo psicologo = psicologos.getObject(0);
+        consultas.criarConsulta(paciente,psicologo);
+        Consulta consulta = consultas.getObject(0);
         System.out.println(clinica.toString());
-        System.out.println(clinica2.toString());
         System.out.println(consulta.toString());
         System.out.println(psicologo.toString());
         System.out.println(paciente.toString());

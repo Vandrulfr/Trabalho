@@ -1,24 +1,39 @@
 package Psicologo;
 
-import java.util.HashSet;
+import java.io.Serializable;
+import java.util.ArrayList;
 
+import Abstract.Model;
 import Clinica.Clinica;
 import Consulta.Consulta;
 /***
  * Cada Psicologo tem um nome, apenas uma clinica, e varias consultas.
  */
-public class Psicologo {
+public class Psicologo extends Model implements Serializable {
+    static final long serialVersionUID = 1l;
     private String nome;
-    private Clinica clinica;
-    protected HashSet<Consulta> calendario;
+    private int clinica;
+    protected ArrayList<Integer> consultas;
+    public int id;
 
 
     public Psicologo(String nome, Clinica clinica) {
         this.nome = nome;
-        this.clinica = clinica;
-        this.calendario = new HashSet<Consulta>();
+        this.clinica = clinica.getId();
+        this.consultas = new ArrayList<Integer>();
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    protected static Psicologo leDeArquivo(String nome){
+        return ((Psicologo) Model.leDeArquivo(nome));
+    }
 
     public String getNome() {
         return this.nome;
@@ -28,15 +43,17 @@ public class Psicologo {
         this.nome = nome;
     }
 
-    public Clinica getClinica() {
+    public int getClinica() {
         return this.clinica;
     }
 
-    public HashSet<Consulta> getCalendario() {
-        return this.calendario;
+    public ArrayList<Integer> getConsultas() {
+        return this.consultas;
     }
 
-
+    public void addConsulta(Consulta consulta){
+        consultas.add(consulta.getId());
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -46,16 +63,18 @@ public class Psicologo {
             return false;
         }
         Psicologo psicologo = (Psicologo) o;
-        return (nome == psicologo.nome) && (clinica == psicologo.clinica);
+        return (nome.equals(psicologo.getNome()) && 
+            (clinica == (psicologo.getClinica())));
     }
 
     @Override
     public String toString() {
-        return "{" +
-            " nome='" + getNome() + "'" +
-            ", clinica='" + getClinica() + "'" +
-            ", calendario='" + getCalendario() + "'" +
-            "}";
+        return 
+            "ID: " + getId() +
+            "\nnome: " + getNome() +
+            "\nclinica: " + getClinica() +
+            "\nconsultas: " + getConsultas()
+            ;
     }
     
 
