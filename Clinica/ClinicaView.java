@@ -7,6 +7,11 @@ import Abstract.View;
 public class ClinicaView extends View{
     ClinicaController clinicas_index;
     Scanner scanner;
+
+    public ClinicaView(){
+        clinicas_index = new ClinicaController();
+        scanner = new Scanner(System.in);
+    }
     protected void novo() {
         System.out.println("Em que cidade fica a clinica?");
         String cidade = scanner.nextLine();
@@ -25,7 +30,7 @@ public class ClinicaView extends View{
         
     }
     protected void index() {
-        clinicas_index.clinicas.forEach((c) -> System.out.println(c.toString()+"\n"));
+        clinicas_index.clinicas.forEach((c) -> System.out.println(clinicas_index.getObject(c).toString()+"\n"));
         home();
     }
     public void home() {

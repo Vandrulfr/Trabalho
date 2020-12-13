@@ -18,7 +18,7 @@ public class Main {
         /***
          * Testes
          */
-        boolean teste = true;
+        boolean teste = false;
         if(teste){
             ClinicaController clinicas = new ClinicaController();
             PsicologoController psicologos = new PsicologoController();
