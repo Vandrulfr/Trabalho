@@ -15,7 +15,7 @@ public class Paciente extends Model implements Serializable {
     private String nome;
     long cpf;
     boolean primeira_consulta = true;
-    Consulta proxima_consulta;
+    int proxima_consulta = -1;
 
     public Paciente(String nome, long cpf){
         this.nome = nome;
@@ -43,14 +43,17 @@ public class Paciente extends Model implements Serializable {
         this.primeira_consulta = primeira_consulta;
     }
 
-    public Consulta getProxima_consulta() {
+    public int getProxima_consulta() {
         return this.proxima_consulta;
     }
 
-    public void setProxima_consulta(Consulta proxima_consulta) {
+    public void setProxima_consulta(int proxima_consulta) {
         this.proxima_consulta = proxima_consulta;
     }
 
+    protected static Paciente leDeArquivo(String nome){
+        return ((Paciente) Model.leDeArquivo(nome));
+    }
 
     @Override
     public String toString() {

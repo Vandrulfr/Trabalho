@@ -8,11 +8,11 @@ Todo:
 * ~~Modelagem de Paciente~~
 * ~~Testar modelos~~
 * ~~Refatoração~~
-* Controllers
+* ~~Controllers~~
     * ~~Clinica~~
     * ~~Psicologo~~
     * ~~Consulta~~
-    * Paciente
+    * ~~Paciente~~
 * Views
 * Criacao de Consulta
     * Verificando horarios compativeis
