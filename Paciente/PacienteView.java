@@ -4,17 +4,18 @@ import java.util.Scanner;
 
 import Consulta.Consulta;
 import Consulta.ConsultaController;
-import Abstract.View;
 
-public class PacienteView {
+public class PacienteView extends Abstract.View {
     PacienteController pacientes_index;
+    Scanner scanner;
 
     public PacienteView(){
         this.pacientes_index = new PacienteController();
+        scanner = new Scanner(System.in);
+
     }
     public void home(){
         String opcao = "0";
-        Scanner scanner = new Scanner(System.in);
         System.out.println("O que gostaria de fazer?");
         System.out.println("1 - Ver lista de pacientes");
         System.out.println("2 - Registrar um novo paciente");
@@ -33,13 +34,12 @@ public class PacienteView {
         }
     }
 
-    private void index(){
+    protected void index(){
         pacientes_index.pacientes.forEach((p)->System.out.println(pacientes_index.getObject(p).toString()+"\n"));
         home();
     }
 
-    private void novo(){
-        Scanner scanner = new Scanner(System.in);
+    protected void novo(){
         System.out.println("Insira o nome do paciente:");
         String nome = scanner.nextLine();
         System.out.println("Insira o cpf do paciente");
@@ -51,9 +51,8 @@ public class PacienteView {
         }
         home();
     }
-    void consulta(){
+    private void consulta(){
         ConsultaController consultas = new ConsultaController();
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Qual o id do paciente?");
         int id = scanner.nextInt();
         Paciente paciente = pacientes_index.getObject(id);
@@ -69,10 +68,6 @@ public class PacienteView {
         }
         System.out.println(consulta.toString());
         home();
-    }
-    void back(){
-        View mainview = new View();
-        mainview.home();
     }
     
 }

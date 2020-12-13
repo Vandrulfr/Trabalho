@@ -55,7 +55,7 @@ public class Paciente extends Model implements Serializable {
     }
 
     @Override
-    public String toString() {
+    public String toString() { //TODO: Adaptar
         return "{" +
             " nome='" + getNome() + "'" +
             ", cpf='" + getCpf() + "'" +
@@ -63,5 +63,17 @@ public class Paciente extends Model implements Serializable {
             ", proxima_consulta='" + getProxima_consulta() + "'" +
             "}";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Paciente)) {
+            return false;
+        }
+        Paciente paciente = (Paciente) o;
+        return cpf == paciente.cpf;
+    }
+
 
 }
