@@ -37,7 +37,7 @@ public class ClinicaView extends View{
         String opcao = "0";
         System.out.println("O que gostaria de fazer?");
         System.out.println("1 - Ver lista de clinicas");
-        System.out.println("2 - Registrar uma nova clinca");
+        System.out.println("2 - Registrar uma nova clinica");
         //TODO: System.out.println("3 - Buscar clinicas proximas");
         //TODO: System.out.println("4 - Remover Clinica");
         System.out.println("0 - Voltar para o menu inicial" );
