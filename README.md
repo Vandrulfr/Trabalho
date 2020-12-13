@@ -13,10 +13,10 @@ TODO:
     * ~~Psicologo~~
     * ~~Consulta~~
     * ~~Paciente~~
-* Views
-    * Menu Principal
-    * Clinica
-    * Psicologo
+* ~~Views~~
+    * ~~Menu Principal~~
+    * ~~Clinica~~
+    * ~~Psicologo~~
     * ~~Consulta~~
     * ~~Paciente~~
 * Criacao de Consulta

@@ -36,7 +36,7 @@ public abstract class Controller {
             index = indexArq;
             return true;
         }catch (FileNotFoundException e){
-            System.out.println("Arquivo de Index de "+tipo+" não encontrado.\nCriando arquivo.");
+            System.out.println("Arquivo de Index de "+tipo+" não encontrado.");
             return false;
         }
         catch (Exception e){System.out.println(e); return false;}
