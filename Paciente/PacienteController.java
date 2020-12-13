@@ -11,7 +11,6 @@ public class PacienteController extends Controller{
     public PacienteController(){
         this.carregaIndex(tipo);
         pacientes= index;
-        System.out.println(pacientes);
     }
     
     public Paciente getObject(int id) {
