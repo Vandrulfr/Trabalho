@@ -15,9 +15,7 @@ public class ConsultaController extends Controller{
         Consulta newConsulta = new Consulta(psicologo, paciente);
         if(!consultas.isEmpty()){
             // Confere se não existem duplicatas
-            ArrayList<Consulta> consultasExistentes = new ArrayList<Consulta>();
-            consultas.forEach((c) -> consultasExistentes.add(getObject(c)));
-            if(consultasExistentes.contains(newConsulta)){return false;}
+            if(find(newConsulta)){return false;}
             // Setta id da clinica
             newConsulta.setId(consultas.size());
         }else{

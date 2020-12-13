@@ -23,9 +23,7 @@ public final class ClinicaController extends Controller {
         Clinica newClinica = new Clinica(cidade, bairro, endereco_0, endereco_1);
         if(!clinicas.isEmpty()){
             // Confere se não existem duplicatas
-            ArrayList<Clinica> clinicasExistentes = new ArrayList<Clinica>();
-            clinicas.forEach((c) -> clinicasExistentes.add(getObject(c)));
-            if(clinicasExistentes.contains(newClinica)){return false;}
+            if(find(newClinica)){return false;}
             // Setta id da clinica
             newClinica.setId(clinicas.size());
         }else{

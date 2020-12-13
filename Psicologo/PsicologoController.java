@@ -18,9 +18,7 @@ public class PsicologoController extends Controller {
         Psicologo newPsicologo = new Psicologo(nome, clinica);
         //System.out.println(psicologos.toString());
         if(!psicologos.isEmpty()){
-            ArrayList<Psicologo> psicologosExistentes = new ArrayList<Psicologo>();
-            psicologos.forEach((p) -> psicologosExistentes.add(getObject(p)));
-            if(psicologosExistentes.contains(newPsicologo)){return false;}
+            if(find(newPsicologo)){return false;}
             // Setta id do psicologo
             newPsicologo.setId(psicologos.size());
         }else{
