@@ -9,10 +9,14 @@ import Abstract.Controller;
 public final class ClinicaController extends Controller {
     ArrayList<Integer> clinicas = index;
     private static String tipo = "Clinicas";
+    
+    public ClinicaController(){
+        carregaIndex(tipo);
+    }
+
 
     /**
      * Cria uma clinica usando o construtor de clinica.
-     * Carrega um HashSet com todas as clinicas existestes, caso a nova clinica ja exista não salva ela
      * @param cidade
      * @param bairro
      * @param endereco_0
