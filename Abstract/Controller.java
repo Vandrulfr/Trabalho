@@ -1,6 +1,7 @@
 package Abstract;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -34,7 +35,11 @@ public abstract class Controller {
             ois.close();
             index = indexArq;
             return true;
-        } catch (Exception e){System.out.println(e); return false;}
+        }catch (FileNotFoundException e){
+            System.out.println("Arquivo de Index de "+tipo+" não encontrado.\nCriando arquivo.");
+            return false;
+        }
+        catch (Exception e){System.out.println(e); return false;}
      }
 
     public boolean find(Object newObject){
