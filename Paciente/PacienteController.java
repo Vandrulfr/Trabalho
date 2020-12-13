@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import Abstract.Controller;
 
 public class PacienteController extends Controller{
-    ArrayList<Integer> pacientes = index;
+    ArrayList<Integer> pacientes;
     private static String tipo = "Pacientes";
 
     public PacienteController(){
-        carregaIndex(tipo);
+        this.carregaIndex(tipo);
+        pacientes= index;
+        System.out.println(pacientes);
     }
     
     public Paciente getObject(int id) {

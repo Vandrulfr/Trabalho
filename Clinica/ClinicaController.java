@@ -7,11 +7,12 @@ import Abstract.Controller;
  * Controller de Clinica. Através dele são criadas e manipuladas as Clinicas.
  */
 public final class ClinicaController extends Controller {
-    ArrayList<Integer> clinicas = index;
+    ArrayList<Integer> clinicas;
     private static String tipo = "Clinicas";
     
     public ClinicaController(){
-        carregaIndex(tipo);
+        this.carregaIndex(tipo);
+        clinicas = index;
     }
 
 

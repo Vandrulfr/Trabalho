@@ -9,11 +9,12 @@ import Psicologo.Psicologo;
 import Psicologo.PsicologoController;
 
 public class ConsultaController extends Controller{
-    ArrayList<Integer> consultas = index;
+    ArrayList<Integer> consultas;
     private static String tipo = "Consultas";
 
     public ConsultaController(){
-        carregaIndex(tipo);
+        this.carregaIndex(tipo);
+        consultas = index;
     }
 
     public boolean criarConsulta(Paciente paciente, Psicologo psicologo){

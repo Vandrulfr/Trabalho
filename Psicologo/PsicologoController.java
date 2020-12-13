@@ -8,10 +8,11 @@ import Clinica.ClinicaController;
 
 public class PsicologoController extends Controller {
     private static String tipo = "Psicologos";
-    ArrayList<Integer> psicologos = index;
+    ArrayList<Integer> psicologos;
     
     public PsicologoController(){
         this.carregaIndex(tipo);
+        psicologos = index;
     }
 
     public boolean criarPsicologo(String nome, Clinica clinica) {
