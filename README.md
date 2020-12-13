@@ -1,7 +1,7 @@
 # Trabalho PoO
 ---------
 
-Todo:
+TODO:
 * ~~Modelagem de Clinica~~
 * ~~Modelagem de Consulta~~
 * ~~Modelagem de Psicologo~~

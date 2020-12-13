@@ -33,4 +33,7 @@ public class PacienteController extends Controller{
         paciente.escreveEmArquivo("Database/Paciente"+paciente.getId());
      }
     
+    public boolean find(Paciente newPaciente){
+        return index.stream().anyMatch(o -> getObject(o).equals(newPaciente));
+    }
 }

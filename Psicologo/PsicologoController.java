@@ -41,6 +41,10 @@ public class PsicologoController extends Controller {
      public static void update(Psicologo psicologo){
         psicologo.escreveEmArquivo("Database/Psicologo"+psicologo.getId());
      }
+    
+     public boolean find(Psicologo newPsicologo){
+        return index.stream().anyMatch(o -> getObject(o).equals(newPsicologo));
+    }
 
 }
 

@@ -50,4 +50,7 @@ public class ConsultaController extends Controller{
         return Consulta.leDeArquivo("Database/Consulta"+id);
     }
     
+    public boolean find(Consulta newConsulta){
+        return index.stream().anyMatch(o -> getObject(o).equals(newConsulta));
+    }
 }

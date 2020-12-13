@@ -48,5 +48,8 @@ public final class ClinicaController extends Controller {
         clinica.escreveEmArquivo("Database/Clinica"+String.valueOf(clinica.id));
      }
      
+    public boolean find(Clinica newClinica){
+        return index.stream().anyMatch(o -> getObject(o).equals(newClinica));
+    }
 
 }

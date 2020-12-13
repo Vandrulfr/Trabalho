@@ -42,9 +42,6 @@ public abstract class Controller {
         catch (Exception e){System.out.println(e); return false;}
      }
 
-    public boolean find(Object newObject){
-        return index.stream().anyMatch(o -> o.equals(newObject));
-    }
 
     
 }
