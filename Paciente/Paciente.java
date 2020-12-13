@@ -3,7 +3,6 @@ package Paciente;
 import java.io.Serializable;
 
 import Abstract.Model;
-import Consulta.Consulta;
 /***
  * Um paciente guarda o dado de sua proxima consulta, caso exista, seu nome, e uma bool que diz se é sua primeira consulta
  * (Quando estava pesquisando vi que alguns locais tinham precos diferentes para a primeira consulta.

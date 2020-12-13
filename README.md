@@ -14,6 +14,11 @@ Todo:
     * ~~Consulta~~
     * ~~Paciente~~
 * Views
+    * Menu Principal
+    * Clinica
+    * Psicologo
+    * Consulta
+    * ~~Paciente~~
 * Criacao de Consulta
     * Verificando horarios compativeis
     * Verificando se é a primeira consulta do paciente
