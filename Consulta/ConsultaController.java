@@ -1,5 +1,7 @@
 package Consulta;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import Abstract.Controller;
@@ -17,8 +19,15 @@ public class ConsultaController extends Controller{
         consultas = index;
     }
 
-    public boolean criarConsulta(Paciente paciente, Psicologo psicologo){
-        Consulta newConsulta = new Consulta(psicologo, paciente);
+    public boolean criarConsulta(int paciente_id, int psicologo_id, LocalDate data, LocalTime horario_inicio){
+        Consulta newConsulta = new Consulta(psicologo_id, paciente_id);
+        newConsulta.setData(data);
+        newConsulta.setHorario_inicio(horario_inicio);
+        PsicologoController psicologos = new PsicologoController();
+        Psicologo psicologo = psicologos.getObject(psicologo_id);
+        PacienteController pacientes = new PacienteController();
+        Paciente paciente = pacientes.getObject(paciente_id);
+
         if(!consultas.isEmpty()){
             // Confere se não existem duplicatas
             if(find(newConsulta)){return false;}

@@ -9,7 +9,9 @@ import Abstract.Model;
 import Paciente.Paciente;
 import Psicologo.Psicologo;
 
-/*** Uma consulta tem uma um paciente, um psicologo, data, horario de começo e fim. */
+/*** Uma consulta tem uma um paciente, um psicologo, data, horario de começo e fim.
+ * Cada consulta dura exatamente uma hora
+ */
 public class Consulta extends Model implements Serializable{
     static final long serialVersionUID = 1l;
     private int paciente;
@@ -19,9 +21,9 @@ public class Consulta extends Model implements Serializable{
     private LocalTime horario_fim;
 
 
-    public Consulta(Psicologo psicologo, Paciente paciente){
-        this.paciente = paciente.getId();
-        this.psicologo = psicologo.getId();
+    public Consulta(int psicologo, int paciente){
+        this.paciente = paciente;
+        this.psicologo = psicologo;
     }
 
     public void setPaciente(Paciente paciente) {
@@ -34,10 +36,7 @@ public class Consulta extends Model implements Serializable{
 
     public void setHorario_inicio(LocalTime horario_inicio) {
         this.horario_inicio = horario_inicio;
-    }
-
-    public void setHorario_fim(LocalTime horario_fim) {
-        this.horario_fim = horario_fim;
+        this.horario_fim = horario_inicio.plusHours(1);
     }
 
     public void setPsicologo(Psicologo psicologo) {
@@ -67,6 +66,7 @@ public class Consulta extends Model implements Serializable{
     protected static Consulta leDeArquivo(String nome){
         return ((Consulta) Model.leDeArquivo(nome));
     }
+    
 
     @Override
     public boolean equals(Object o) {
@@ -79,8 +79,7 @@ public class Consulta extends Model implements Serializable{
         return 
             (psicologo == (consulta.getPsicologo())) && 
             (data.equals(consulta.getData())) && 
-            (horario_inicio.equals(consulta.getHorario_inicio())) && 
-            (horario_fim.equals(consulta.getHorario_fim()));
+            (horario_inicio.equals(consulta.getHorario_inicio()));
     }
 
     @Override
