@@ -11,6 +11,7 @@ public abstract class View {
         mainview.home();
     }
     protected abstract void index();
+    protected abstract void remove();
 
     
 }

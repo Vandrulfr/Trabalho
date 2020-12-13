@@ -39,7 +39,15 @@ public class ConsultaController extends Controller{
         newConsulta.escreveEmArquivo("Database/Consulta"+newConsulta.getId());
         psicologo.addConsulta(newConsulta);
         PsicologoController.update(psicologo);
-        if(paciente.getProxima_consulta()==-1){paciente.setProxima_consulta(newConsulta.getId());}
+        if(paciente.isPrimeira_consulta()){
+            if(paciente.getProxima_consulta()==-1){
+                paciente.setProxima_consulta(newConsulta.getId());
+            }else{paciente.setPrimeira_consulta(false);}
+        }else{
+            if(getObject(paciente.getProxima_consulta()).getData().isBefore(LocalDate.now())){
+                paciente.setProxima_consulta(newConsulta.getId());
+            }
+        }
         PacienteController.update(paciente);
         consultas.add(newConsulta.getId());
         return salvaIndex(tipo);

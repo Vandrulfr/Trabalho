@@ -13,11 +13,26 @@ public class ConsultaView extends View{
         consultas_index = new ConsultaController();
         scanner = new Scanner(System.in);
     }
+
+
+    protected void remove() {
+        System.out.println("Qual o id da consulta que deseja remover?");
+        int id = scanner.nextInt();
+        System.out.println("Tem certeza que deseja prosseguir? A remoção é irreversivel(s/N");
+        String confirmacao = scanner.next();
+        if(confirmacao.toLowerCase().equals("s")){
+            if(consultas_index.deleteObject(id, "Consulta")){
+                System.out.println("Consulta removida com sucesso.");
+            }else{System.out.println("Ocorreu um problema na remoção");}
+        }else{System.out.println("Remoção cancelada");}
+    }
+
     public void home(){
         String opcao = "0";
         System.out.println("O que gostaria de fazer?");
         System.out.println("1 - Ver todas consultas");
         System.out.println("2 - Agendar consulta");
+        System.out.println("3 - Remover consulta");
         System.out.println("0 - Voltar para o menu inicial" );
         System.out.println("\n");
         if(scanner.hasNextLine()){
@@ -27,6 +42,7 @@ public class ConsultaView extends View{
         switch(opcao) {
             case "1": index();
             case "2": novo();
+            case "3": remove();
             case "0": back();
         }
     }

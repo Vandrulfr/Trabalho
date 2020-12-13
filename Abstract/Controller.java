@@ -1,5 +1,6 @@
 package Abstract;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -17,6 +18,13 @@ public abstract class Controller {
 
     //public abstract void update(Object o);
     public abstract Object getObject(int id);
+
+    public boolean deleteObject(int id, String tipo){
+        File f = new File("Database/"+tipo+id);
+        if (f.delete()){
+            return (index.remove(Integer.valueOf(id)));
+        }else{return false;}
+    }
     
     public boolean salvaIndex(String tipo) {
         try{

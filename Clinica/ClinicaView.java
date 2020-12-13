@@ -33,13 +33,25 @@ public class ClinicaView extends View{
         clinicas_index.clinicas.forEach((c) -> System.out.println(clinicas_index.getObject(c).toString()+"\n"));
         home();
     }
+        
+    protected void remove() {
+        System.out.println("Qual o id da Clinica que deseja remover?");
+        int id = scanner.nextInt();
+        System.out.println("Tem certeza que deseja prosseguir? A remoção é irreversivel(s/N)");
+        String confirmacao = scanner.nextLine();
+        if(confirmacao.toLowerCase().equals("s")){
+            if(clinicas_index.deleteObject(id, "Clinica")){
+                System.out.println("Clinica removida com sucesso.");
+            }else{System.out.println("Ocorreu um problema na remoção");}
+        }else{System.out.println("Remoção cancelada");}
+    }
     public void home() {
         String opcao = "0";
         System.out.println("O que gostaria de fazer?");
         System.out.println("1 - Ver lista de clinicas");
         System.out.println("2 - Registrar uma nova clinica");
         //TODO: System.out.println("3 - Buscar clinicas proximas");
-        //TODO: System.out.println("4 - Remover Clinica");
+        System.out.println("4 - Remover Clinica");
         System.out.println("0 - Voltar para o menu inicial" );
         System.out.println("\n");
         if(scanner.hasNextLine()){
@@ -50,6 +62,7 @@ public class ClinicaView extends View{
             case "1": index();
             case "2": novo();
             //case "3": consulta();
+            case "4": remove();
             case "0": back();
         }
     }

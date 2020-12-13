@@ -20,6 +20,7 @@ public class PacienteView extends Abstract.View {
         System.out.println("1 - Ver lista de pacientes");
         System.out.println("2 - Registrar um novo paciente");
         System.out.println("3 - Verificar a proxima consulta de um paciente");
+        System.out.println("4 - Remover um paciente");
         System.out.println("0 - Voltar para o menu inicial" );
         System.out.println("\n");
         if(scanner.hasNextLine()){
@@ -30,6 +31,7 @@ public class PacienteView extends Abstract.View {
             case "1": index();
             case "2": novo();
             case "3": consulta();
+            case "4": remove();
             case "0": back();
         }
     }
@@ -69,5 +71,16 @@ public class PacienteView extends Abstract.View {
         System.out.println(consulta.toString());
         home();
     }
-    
+    protected void remove() {
+        System.out.println("Qual o id do paciente que deseja remover?");
+        int id = scanner.nextInt();
+        System.out.println("Tem certeza que deseja prosseguir? A remoção é irreversivel(s/N)");
+        String confirmacao = scanner.next();
+        System.out.println(confirmacao);
+        if(confirmacao.toLowerCase().equals("s")){
+            if(pacientes_index.deleteObject(id, "Paciente")){
+                System.out.println("Paciente removido com sucesso.");
+            }else{System.out.println("Ocorreu um problema na remoção");}
+        }else{System.out.println("Remoção cancelada");}
+    }
 }
