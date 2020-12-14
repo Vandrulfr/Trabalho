@@ -3,6 +3,7 @@ package Paciente;
 import java.io.Serializable;
 
 import Abstract.Model;
+import Consulta.ConsultaController;
 /***
  * Um paciente guarda o dado de sua proxima consulta, caso exista, seu nome, e uma bool que diz se é sua primeira consulta
  * (Quando estava pesquisando vi que alguns locais tinham precos diferentes para a primeira consulta.
@@ -56,14 +57,23 @@ public class Paciente extends Model implements Serializable {
     }
 
     @Override
-    public String toString() { //TODO: Adaptar
-        return "{" +
-            " nome='" + getNome() + "'" +
-            ", cpf='" + getCpf() + "'" +
-            ", primeira_consulta='" + isPrimeira_consulta() + "'" +
-            ", proxima_consulta='" + getProxima_consulta() + "'" +
-            "}";
-    }
+    public String toString() {
+        if(isPrimeira_consulta()){
+            return(
+                "ID: "+ id +
+                " nome:" + getNome() +
+                ", cpf: " + getCpf() + 
+                "primeira consulta"
+            );
+        }else{
+            return(
+                "ID: "+ id +
+                " nome:" + getNome() +
+                ", cpf: " + getCpf() + 
+                "proxima consulta: " + getProxima_consulta()
+            );
+        }
+   }
 
     @Override
     public boolean equals(Object o) {
