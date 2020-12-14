@@ -66,4 +66,15 @@ public class Main {
  * seriam Queries) para encontrar clinicas no mesmo bairro ou cidade que o usuario.
  * 
  * B) 
+ * Os metodos novos para escrever em tipos diferentes estão em Abstract/Model.java.
+ * A criação dos objetos está sendo feita nos Controllers (Por exemplo, ClinicaController tem um metodo
+ * que passa argumentos para o construtor de Clinica). O controller também é responsavel por
+ * carregar os objetos dos arquivos. No controller, bastaria alterar o chamado dos metodos escreveEmArquivo()
+ * e leDeArquivo para chamar os metodos de cada respectivo tipo de persistencia.
+ * por exemplo, para salvar um paciente recem-criado num banco MySql usaria
+ * 
+        newPaciente.escreveMySql();
+ * na linha 32 de PsicologosController, ao invés do atual
+        newPaciente.escreveEmArquivo("Database/Paciente"+newPaciente.id);
+ * 
  */
