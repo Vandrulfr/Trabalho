@@ -86,11 +86,12 @@ public class Consulta extends Model implements Serializable{
     @Override
     public String toString() {
         return 
-            "paciente: " + getPaciente() +
+            "ID: " + id +
+            "\npaciente: " + getPaciente() +
             "\npsicologo: " + getPsicologo() +
             "\ndata: " + getData() +
-            "\nhorario_inicio: " + getHorario_inicio()+
-            "\nhorario_fim: " + getHorario_fim();
+            "\nhorario de inicio: " + getHorario_inicio()+
+            "\nhorario de termino : " + getHorario_fim();
     }
 
     

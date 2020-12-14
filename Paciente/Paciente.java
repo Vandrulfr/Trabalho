@@ -58,18 +58,28 @@ public class Paciente extends Model implements Serializable {
     @Override
     public String toString() {
         if(isPrimeira_consulta()){
-            return(
-                "ID: "+ id +
-                " nome:" + getNome() +
-                ", cpf: " + getCpf() + 
-                "primeira consulta"
-            );
+            if (proxima_consulta >=0){
+                return(
+                    "ID: "+ id +
+                    " nome:" + getNome() +
+                    ", cpf: " + getCpf() + 
+                    ", proxima consulta: " + getProxima_consulta() +
+                    ", primeira consulta."
+                );
+            }else{
+                return(
+                    "ID: "+ id +
+                    " nome:" + getNome() +
+                    ", cpf: " + getCpf() + 
+                    ", primeira consulta."
+                );
+            }
         }else{
             return(
                 "ID: "+ id +
                 " nome:" + getNome() +
                 ", cpf: " + getCpf() + 
-                "proxima consulta: " + getProxima_consulta()
+                ", proxima consulta: " + getProxima_consulta()
             );
         }
    }
