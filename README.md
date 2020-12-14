@@ -1,7 +1,10 @@
 # Trabalho PoO
 ---------
+Desenvolvido por Artur Melo para avaliação de Programação Orientada a Objetos, usando OpenJDK 14
 
-TODO:
+---
+
+### Roadmap:
 * ~~Modelagem de Clinica~~
 * ~~Modelagem de Consulta~~
 * ~~Modelagem de Psicologo~~
@@ -24,6 +27,6 @@ TODO:
     * ~~Verificando se é a primeira consulta do paciente~~
     
 * ~~Encontrar clinicas proximas ao paciente com base em Bairro, Cidade~~
-* Refatoração
+* ~~Refatoração~~
 * ~~Salvar dados com persistência~~
 
