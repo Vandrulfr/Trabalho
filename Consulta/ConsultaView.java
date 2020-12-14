@@ -29,6 +29,7 @@ public class ConsultaView extends View{
     }
 
     public void home(){
+        scanner.reset();
         String opcao = "0";
         System.out.println("O que gostaria de fazer?");
         System.out.println("1 - Ver todas consultas");
@@ -36,9 +37,7 @@ public class ConsultaView extends View{
         System.out.println("3 - Remover consulta");
         System.out.println("0 - Voltar para o menu inicial" );
         System.out.println("\n");
-        if(scanner.hasNextLine()){
-            opcao = scanner.nextLine();
-        }
+        opcao = scanner.nextLine();
 
         switch(opcao) {
             case "1": index();
@@ -54,16 +53,21 @@ public class ConsultaView extends View{
     public void novo(){
         System.out.println("Insira o id do psicologo:");
         int psicologo = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Insira o id do paciente");
         int paciente =scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Para que mês deseja marcar a consulta?(Numero)");
         int mes = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Em que dia?");
         int dia = scanner.nextInt();
+        scanner.nextLine();
         int ano = LocalDate.now().getYear();
         LocalDate data = LocalDate.of(ano, mes, dia);
         System.out.println("Comecando que horas?(Sem minutos)");
         int hora = scanner.nextInt();
+        scanner.nextLine();
         LocalTime hora_inicio = LocalTime.of(hora, 0, 0);
         if(consultas_index.criarConsulta(paciente, psicologo, data, hora_inicio)){
             System.out.println("Consulta agendada com sucesso!");

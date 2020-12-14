@@ -32,7 +32,7 @@ public class ConsultaController extends Controller{
             // Confere se não existem duplicatas
             if(find(newConsulta)){return false;}
             // Setta id da clinica
-            newConsulta.id = (consultas.size());
+            newConsulta.id = ((consultas.get(consultas.size()-1))+1);
         }else{
             newConsulta.id = (0);
         }

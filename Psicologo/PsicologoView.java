@@ -18,8 +18,9 @@ public class PsicologoView extends View{
     protected void remove() {
         System.out.println("Qual o id do Psicologo que deseja remover?");
         int id = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Tem certeza que deseja prosseguir? A remoção é irreversivel(s/N");
-        String confirmacao = scanner.next();
+        String confirmacao = scanner.nextLine();
         if(confirmacao.toLowerCase().equals("s")){
             if(psicologos_index.deleteObject(id, "Psicologo")){
                 System.out.println("Psicologo removido com sucesso.");
@@ -32,7 +33,7 @@ public class PsicologoView extends View{
         System.out.println("Insira o nome do psicologo:");
         String nome = scanner.nextLine();
         System.out.println("Insira o ID da Clinica na qual ele irá trabalhar");
-        int id = scanner.nextInt();
+        int id = Integer.parseInt(scanner.nextLine());
         ClinicaController clinicas_index = new ClinicaController();
         Clinica clinica = clinicas_index.getObject(id);
         if(psicologos_index.criarPsicologo(nome, clinica)){
@@ -55,9 +56,7 @@ public class PsicologoView extends View{
         System.out.println("3 - Remover um psicologo");
         System.out.println("0 - Voltar para o menu inicial" );
         System.out.println("\n");
-        if(scanner.hasNextLine()){
-            opcao = scanner.nextLine();
-        }
+        opcao = scanner.nextLine();
 
         switch(opcao) {
             case "1": index();

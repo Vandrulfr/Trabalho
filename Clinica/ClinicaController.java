@@ -30,7 +30,7 @@ public final class ClinicaController extends Controller {
             // Confere se não existem duplicatas
             if(find(newClinica)){return false;}
             // Setta id da clinica
-            newClinica.id = (clinicas.size());
+            newClinica.id = ((clinicas.get(clinicas.size()-1))+1);
         }else{
             newClinica.id = (0);
         }

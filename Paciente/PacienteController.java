@@ -23,7 +23,7 @@ public class PacienteController extends Controller{
             // Confere se não existem duplicatas
             if(find(newPaciente)){return false;}
             // Setta id da clinica
-            newPaciente.id = (pacientes.size());
+            newPaciente.id = ((pacientes.get(pacientes.size()-1))+1);
         }else{newPaciente.id = (0);}
         newPaciente.escreveEmArquivo("Database/Paciente"+newPaciente.id);
         pacientes.add(newPaciente.id);

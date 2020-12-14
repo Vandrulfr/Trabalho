@@ -21,7 +21,7 @@ public class PsicologoController extends Controller {
         if(!psicologos.isEmpty()){
             if(find(newPsicologo)){return false;}
             // Setta id do psicologo
-            newPsicologo.id = (psicologos.size());
+            newPsicologo.id = ((psicologos.get(psicologos.size()-1))+1);
         }else{
             newPsicologo.id = (0);
         }
