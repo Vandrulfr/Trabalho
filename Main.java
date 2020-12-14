@@ -49,34 +49,21 @@ public class Main {
 
 /**
  * A)
- * Para salvar em arquivos de texto, teria que re-escrever os metodos toString() de cada model,
- * e trocaria os toString() atuais para algo como print(), ja que eles são usados apenas para printar os objetos.
- * Também teria que escrever um metodo pra converter de volta de string pra objeto em cada model.
- * Acredito que para salvar num banco MySql a modelagem MVC facilitaria, pois a forma como estou salvando os
- * Serializable atualmente tenta emular a forma como um banco MySql salvaria cada objeto model (Paciente, Clinica, etc)
- * numa tabela relacionada ao seu tipo, e guardando o id de objetos relacionados que poderiam ser facilmente encontrados numa query.
- * Na verdade, um banco MySql provavelmente facilitaria a implementacao de alguns metodos dos controllers
- * (Encontrar objetos com base em um parametro especifico, por exemplo).
- * MongoDB até onde sei é uma implementação open source do MySql, então o mesmo se aplicaria a ele.
- * Em certo momento no desenvolvimento do projeto considerei salvar os objetos em JSON, e acredito que também 
- * poderia ser uma opção viável, mas não tenho certeza de como faria para encontrar cada objeto depois do jeito que
- * está implementado.
- * Em questão de todas classes que realizam operaçoes de persistencia terem os mesmos metodos, minha
- * unica classe na qual isso não é verdade é o ClinicaController, que tem buscas customizadas (que em MySql
- * seriam Queries) para encontrar clinicas no mesmo bairro ou cidade que o usuario.
+ * As classes que realizam a persistencia implementariam a interface Persistencia, que define o contrato para seus
+ * metodos em comum. O controller que desejasse salvar de uma forma diferente poderia instanciar cada
+ * uma dessas classes e usar seus metodos. Caso fosse implementar esses diferentes tipos de persistencia,
+ * também criaria um modelo Persistencia/Serializer, que implementaria essa interface salvando de forma serializavel,
+ * para que ficasse mais facil trocar entre ele e os outros tipos de persistencia
  * 
  * B) 
- * Os metodos novos para escrever em tipos diferentes estão em Abstract/Model.java.
- * A criação dos objetos está sendo feita nos Controllers (Por exemplo, ClinicaController tem um metodo
- * que passa argumentos para o construtor de Clinica). O controller também é responsavel por
- * carregar os objetos dos arquivos (Chamando os metodos de Model).
- *  No controller, bastaria alterar o chamado dos metodos escreveEmArquivo()
- * e leDeArquivo para chamar os metodos de cada respectivo tipo de persistencia.
- * por exemplo, para salvar um paciente recem-criado num banco MySql usaria
+ * Criei uma interface Persistencia, que é implementada pelos objetos do Package Persistencia.
+ * Para usar esses outros tipos de persistencia bastaria extender essas classes nos controllers
+ * e instanciar como por exemplo MySql persistencia = new MySql(); 
+ * (ao invés de Abstract.Controller, cujos metodos se tornariam redundantes) onde deseja usa-los
+ * E chamar seus metodos onde se aplicam, como por exemplo mySql.insere(newClinica)
+ * na linha 37 do ClinicaController.
+ * Para trocar entre eles bastaria mudar o tipo de persistencia 
+ * por exemplo, Texto persistencia = new Texto(); ao invés do exemplo dado acima com MySql
+ *
  * 
-        newPaciente.escreveMySql();
- * na linha 32 de PsicologosController, ao invés do atual
-        newPaciente.escreveEmArquivo("Database/Paciente"+newPaciente.id);
- * Graças a PoO, seria uma adaptação minuscula dos metodos já existentes, já que todos modelos herdam de
- * Abstract.Model;
  */
