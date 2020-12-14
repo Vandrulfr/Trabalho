@@ -23,8 +23,7 @@ TODO:
     * ~~Verificando horarios compativeis~~
     * ~~Verificando se é a primeira consulta do paciente~~
     
-* Encontrar clinicas proximas ao paciente com base em Bairro, Cidade
-    * Modelagem de cidade para verificar em cidades vizinhas caso não encontre na cidade do Paciente?
+* ~~Encontrar clinicas proximas ao paciente com base em Bairro, Cidade~~
 * Refatoração
 * ~~Salvar dados com persistência~~
 
