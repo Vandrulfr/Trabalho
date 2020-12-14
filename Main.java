@@ -46,3 +46,24 @@ public class Main {
     }
     
 }
+
+/**
+ * A)
+ * Para salvar em arquivos de texto, teria que re-escrever os metodos toString() de cada model,
+ * e trocaria os toString() atuais para algo como print(), ja que eles são usados apenas para printar os objetos.
+ * Também teria que escrever um metodo pra converter de volta de string pra objeto em cada model.
+ * Acredito que para salvar num banco MySql a modelagem MVC facilitaria, pois a forma como estou salvando os
+ * Serializable atualmente tenta emular a forma como um banco MySql salvaria cada objeto model (Paciente, Clinica, etc)
+ * numa tabela relacionada ao seu tipo, e guardando o id de objetos relacionados que poderiam ser facilmente encontrados numa query.
+ * Na verdade, um banco MySql provavelmente facilitaria a implementacao de alguns metodos dos controllers
+ * (Encontrar objetos com base em um parametro especifico, por exemplo).
+ * MongoDB até onde sei é uma implementação open source do MySql, então o mesmo se aplicaria a ele.
+ * Em certo momento no desenvolvimento do projeto considerei salvar os objetos em JSON, e acredito que também 
+ * poderia ser uma opção viável, mas não tenho certeza de como faria para encontrar cada objeto depois do jeito que
+ * está implementado.
+ * Em questão de todas classes que realizam operaçoes de persistencia terem os mesmos metodos, minha
+ * unica classe na qual isso não é verdade é o ClinicaController, que tem buscas customizadas (que em MySql
+ * seriam Queries) para encontrar clinicas no mesmo bairro ou cidade que o usuario.
+ * 
+ * B) 
+ */
