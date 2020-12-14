@@ -16,6 +16,7 @@ public class Consulta extends Model implements Serializable{
     static final long serialVersionUID = 1l;
     private int paciente;
     private int psicologo;
+    public int id;
     private LocalDate data;
     private LocalTime horario_inicio;
     private LocalTime horario_fim;
@@ -27,7 +28,7 @@ public class Consulta extends Model implements Serializable{
     }
 
     public void setPaciente(Paciente paciente) {
-        this.paciente = paciente.getId();
+        this.paciente = paciente.id;
     }
 
     public void setData(LocalDate data) {
@@ -40,7 +41,7 @@ public class Consulta extends Model implements Serializable{
     }
 
     public void setPsicologo(Psicologo psicologo) {
-        this.psicologo = psicologo.getId();
+        this.psicologo = psicologo.id;
     }
 
     public int getPaciente() {
@@ -66,7 +67,7 @@ public class Consulta extends Model implements Serializable{
     protected static Consulta leDeArquivo(String nome){
         return ((Consulta) Model.leDeArquivo(nome));
     }
-    
+
 
     @Override
     public boolean equals(Object o) {

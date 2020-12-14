@@ -22,7 +22,8 @@ public abstract class Controller {
     public boolean deleteObject(int id, String tipo){
         File f = new File("Database/"+tipo+id);
         if (f.delete()){
-            return (index.remove(Integer.valueOf(id)));
+            index.remove(Integer.valueOf(id));
+            return salvaIndex(tipo+"s");
         }else{return false;}
     }
     

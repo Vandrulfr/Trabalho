@@ -32,24 +32,24 @@ public class ConsultaController extends Controller{
             // Confere se não existem duplicatas
             if(find(newConsulta)){return false;}
             // Setta id da clinica
-            newConsulta.setId(consultas.size());
+            newConsulta.id = (consultas.size());
         }else{
-            newConsulta.setId(0);
+            newConsulta.id = (0);
         }
-        newConsulta.escreveEmArquivo("Database/Consulta"+newConsulta.getId());
+        newConsulta.escreveEmArquivo("Database/Consulta"+newConsulta.id);
         psicologo.addConsulta(newConsulta);
         PsicologoController.update(psicologo);
         if(paciente.isPrimeira_consulta()){
             if(paciente.getProxima_consulta()==-1){
-                paciente.setProxima_consulta(newConsulta.getId());
+                paciente.setProxima_consulta(newConsulta.id);
             }else{paciente.setPrimeira_consulta(false);}
         }else{
             if(getObject(paciente.getProxima_consulta()).getData().isBefore(LocalDate.now())){
-                paciente.setProxima_consulta(newConsulta.getId());
+                paciente.setProxima_consulta(newConsulta.id);
             }
         }
         PacienteController.update(paciente);
-        consultas.add(newConsulta.getId());
+        consultas.add(newConsulta.id);
         return salvaIndex(tipo);
 
     }

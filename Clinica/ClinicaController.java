@@ -30,12 +30,12 @@ public final class ClinicaController extends Controller {
             // Confere se não existem duplicatas
             if(find(newClinica)){return false;}
             // Setta id da clinica
-            newClinica.setId(clinicas.size());
+            newClinica.id = (clinicas.size());
         }else{
-            newClinica.setId(0);
+            newClinica.id = (0);
         }
-        newClinica.escreveEmArquivo("Database/Clinica"+String.valueOf(newClinica.getId()));
-        clinicas.add(newClinica.getId());
+        newClinica.escreveEmArquivo("Database/Clinica"+String.valueOf(newClinica.id));
+        clinicas.add(newClinica.id);
         return salvaIndex(tipo);
      }
      
@@ -52,4 +52,16 @@ public final class ClinicaController extends Controller {
         return index.stream().anyMatch(o -> getObject(o).equals(newClinica));
     }
 
+    public ArrayList<Clinica> naCidade(String cidade){
+        ArrayList<Clinica> perto = new ArrayList<Clinica>();
+        for(int id: index){
+           if(getObject(id).getCidade().toLowerCase().equals(cidade.toLowerCase())){perto.add(getObject(id));}
+        }return perto;
+    }
+    public ArrayList<Clinica> noBairro(String bairro){
+        ArrayList<Clinica> perto = new ArrayList<Clinica>();
+        for(int id: index){
+           if(getObject(id).getBairro().toLowerCase().equals(bairro.toLowerCase())){perto.add(getObject(id));}
+        }return perto;
+    }
 }

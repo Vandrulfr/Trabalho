@@ -23,14 +23,14 @@ public class PacienteController extends Controller{
             // Confere se não existem duplicatas
             if(find(newPaciente)){return false;}
             // Setta id da clinica
-            newPaciente.setId(pacientes.size());
-        }else{newPaciente.setId(0);}
-        newPaciente.escreveEmArquivo("Database/Paciente"+newPaciente.getId());
-        pacientes.add(newPaciente.getId());
+            newPaciente.id = (pacientes.size());
+        }else{newPaciente.id = (0);}
+        newPaciente.escreveEmArquivo("Database/Paciente"+newPaciente.id);
+        pacientes.add(newPaciente.id);
         return salvaIndex(tipo);
     }
      public static void update(Paciente paciente){
-        paciente.escreveEmArquivo("Database/Paciente"+paciente.getId());
+        paciente.escreveEmArquivo("Database/Paciente"+paciente.id);
      }
     
     public boolean find(Paciente newPaciente){

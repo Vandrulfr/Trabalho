@@ -11,7 +11,6 @@ import java.io.ObjectOutputStream;
  * setId()
  */
 public abstract class Model {
-    public int id;
     public void escreveEmArquivo(String nome){
         try{
             FileOutputStream fos = new FileOutputStream(nome);
@@ -31,11 +30,4 @@ public abstract class Model {
         } catch (Exception e){System.out.println(e); return null;}
     }
     
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

@@ -12,6 +12,7 @@ import Abstract.Model;
 public class Paciente extends Model implements Serializable {
     static final long serialVersionUID = 1l;
     private String nome;
+    public int id;
     long cpf;
     boolean primeira_consulta = true;
     int proxima_consulta = -1;

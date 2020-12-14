@@ -21,16 +21,16 @@ public class PsicologoController extends Controller {
         if(!psicologos.isEmpty()){
             if(find(newPsicologo)){return false;}
             // Setta id do psicologo
-            newPsicologo.setId(psicologos.size());
+            newPsicologo.id = (psicologos.size());
         }else{
-            newPsicologo.setId(0);
+            newPsicologo.id = (0);
         }
         //adiciona o novo psicologo no array de psicologos da sua clinica
         clinica.addPsicologo(newPsicologo);
         //System.out.println(clinica.toString());
         ClinicaController.update(clinica);
-        newPsicologo.escreveEmArquivo("Database/Psicologo"+newPsicologo.getId());
-        psicologos.add(newPsicologo.getId());
+        newPsicologo.escreveEmArquivo("Database/Psicologo"+newPsicologo.id);
+        psicologos.add(newPsicologo.id);
         return salvaIndex(tipo);
         }
         
@@ -39,7 +39,7 @@ public class PsicologoController extends Controller {
      }
      
      public static void update(Psicologo psicologo){
-        psicologo.escreveEmArquivo("Database/Psicologo"+psicologo.getId());
+        psicologo.escreveEmArquivo("Database/Psicologo"+psicologo.id);
      }
     
      public boolean find(Psicologo newPsicologo){

@@ -19,16 +19,8 @@ public class Psicologo extends Model implements Serializable {
 
     public Psicologo(String nome, Clinica clinica) {
         this.nome = nome;
-        this.clinica = clinica.getId();
+        this.clinica = clinica.id;
         this.consultas = new ArrayList<Integer>();
-    }
-
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     protected static Psicologo leDeArquivo(String nome){
@@ -52,7 +44,7 @@ public class Psicologo extends Model implements Serializable {
     }
 
     public void addConsulta(Consulta consulta){
-        consultas.add(consulta.getId());
+        consultas.add(consulta.id);
     }
 
     @Override
@@ -70,7 +62,7 @@ public class Psicologo extends Model implements Serializable {
     @Override
     public String toString() {
         return 
-            "ID: " + getId() +
+            "ID: " + id +
             "\nnome: " + getNome() +
             "\nclinica: " + getClinica() +
             "\nconsultas: " + getConsultas()

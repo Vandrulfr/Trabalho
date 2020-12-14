@@ -13,7 +13,7 @@ import Psicologo.Psicologo;
  */
 public class Clinica extends Model implements Serializable{
     static final long serialVersionUID = 1l;
-    protected int id;
+    public int id;
     private String cidade;
     private String bairro;
     private String endereco_0;
@@ -78,8 +78,9 @@ public class Clinica extends Model implements Serializable{
     }
 
     public void addPsicologo(Psicologo psicologo){
-        this.psicologos.add(psicologo.getId());
+        this.psicologos.add(psicologo.id);
     }
+
 
     // public HashSet<Consulta> getCalendario() {
     //     return this.calendario;
@@ -106,7 +107,7 @@ public class Clinica extends Model implements Serializable{
     @Override
     public String toString() {
         return 
-            "ID: " + getId() + 
+            "ID: " + id + 
             "\ncidade: " + getCidade() +
             "\nbairro: " + getBairro() +
             "\nendereço: " + getEndereco_0() + 
