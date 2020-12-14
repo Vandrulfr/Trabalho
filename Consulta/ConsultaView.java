@@ -25,6 +25,7 @@ public class ConsultaView extends View{
                 System.out.println("Consulta removida com sucesso.");
             }else{System.out.println("Ocorreu um problema na remoção");}
         }else{System.out.println("Remoção cancelada");}
+        home();
     }
 
     public void home(){

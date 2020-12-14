@@ -25,6 +25,7 @@ public class PsicologoView extends View{
                 System.out.println("Psicologo removido com sucesso.");
             }else{System.out.println("Ocorreu um problema na remoção");}
         }else{System.out.println("Remoção cancelada");}
+        home();
     }
 
     protected void novo() {

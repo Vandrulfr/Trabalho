@@ -45,6 +45,7 @@ public class ClinicaView extends View{
                 System.out.println("Clinica removida com sucesso.");
             }else{System.out.println("Ocorreu um problema na remoção");}
         }else{System.out.println("Remoção cancelada");}
+        home();
     }
     public void home() {
         String opcao = "0";

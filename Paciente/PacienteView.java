@@ -82,5 +82,6 @@ public class PacienteView extends Abstract.View {
                 System.out.println("Paciente removido com sucesso.");
             }else{System.out.println("Ocorreu um problema na remoção");}
         }else{System.out.println("Remoção cancelada");}
+        home();
     }
 }
